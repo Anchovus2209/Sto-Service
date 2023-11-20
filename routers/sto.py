@@ -13,7 +13,7 @@ class Sto(BaseModel):
     name: str
 
 
-@router.post('/create', summary='Создание нового СТО', description='Описание создания нового СТО')
+@router.post('/create', summary='Создание нового СТО')
 async def create_new_sto(sto: Sto):
     query = f'''
             insert into sto.sto (adress, description, name)
