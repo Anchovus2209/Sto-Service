@@ -28,7 +28,7 @@ async def create_new_master_feedback(master_id: int, feedback: Feedback):
 async def update_master_feedback_info(sto_id: int, master_id: int, feedback_id: int, feedback: Feedback):
     query = f'''
             update sto.feedback
-            set desccription = '{feedback.description}',name = '{feedback.name}', photo = '{feedback.photo}', rating = {feedback.rating}
+            set description = '{feedback.description}',name = '{feedback.name}', photo = '{feedback.photo}', rating = {feedback.rating}
             where id = {feedback_id} and master_id = {master_id}
             returning id;
             '''

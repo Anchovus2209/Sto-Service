@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from db import postgre
-from routers import sto_router, master_router, consultatin_router, portfolio_router, feedback_router, service_router
+from routers import sto_router, master_router, consultatin_router, portfolio_router, feedback_router, service_router, master_service_router
 import uvicorn
    
 app = FastAPI()
@@ -10,7 +10,8 @@ app.include_router(master_router, prefix='/sto', tags=['master'])
 app.include_router(consultatin_router, prefix='/sto', tags=['consultation'])
 app.include_router(portfolio_router, prefix='/sto', tags=['portfolio'])
 app.include_router(feedback_router, prefix='/sto', tags=['feedback'])
-app.include_router(service_router, prefix='/sto', tags=['service'])
+app.include_router(service_router, prefix='/service', tags=['service'])
+app.include_router(master_service_router, prefix='/master_service', tags=['master_service'])
 
 
 # Вызов функции при старте сервера
