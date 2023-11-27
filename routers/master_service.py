@@ -62,3 +62,19 @@ async def get_all_sto_services(sto_id: int):
             '''
     result = postgre.execute_query(query, fetch_type='all', commit=False)
     return JSONResponse(result)
+
+
+@router.get("/by_master_id/{master_id}/all")
+async def get_all_master_services(master_id: int):
+    query = f'''
+            select s.*, msr.price, m.name
+            from sto.service s
+            inner join sto.master_service_rel msr
+            on s.id = msr.service_id 
+            inner join sto.master m 
+            on m.id = msr.master_id
+            where m.id = 2
+            group by msr.price, m.name, s.id, s.name, s.description
+            '''
+    result = postgre.execute_query(query, fetch_type='all', commit=False)
+    return JSONResponse(result)
