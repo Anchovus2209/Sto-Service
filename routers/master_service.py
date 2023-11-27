@@ -73,7 +73,7 @@ async def get_all_master_services(master_id: int):
             on s.id = msr.service_id 
             inner join sto.master m 
             on m.id = msr.master_id
-            where m.id = 2
+            where m.id = {master_id}
             group by msr.price, m.name, s.id, s.name, s.description
             '''
     result = postgre.execute_query(query, fetch_type='all', commit=False)
