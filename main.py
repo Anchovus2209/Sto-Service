@@ -12,7 +12,7 @@ app.include_router(portfolio_router, prefix='/sto', tags=['portfolio'])
 app.include_router(feedback_router, prefix='/sto', tags=['feedback'])
 app.include_router(service_router, prefix='/service', tags=['service'])
 app.include_router(master_service_router, prefix='/master_service', tags=['master_service'])
-app.include_router(master_service_record_router, prefix='/service', tags=['master_service_record'])
+app.include_router(master_service_record_router, tags=['master_service_record'])
 
 # Вызов функции при старте сервера
 @app.on_event('startup')
