@@ -6,3 +6,4 @@ from .feedback import router as feedback_router
 from .service import router as service_router
 from .master_service import router as master_service_router
 from .master_service_record import router as master_service_record_router
+from .car import router as car_router
