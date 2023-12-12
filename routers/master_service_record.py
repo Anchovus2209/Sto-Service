@@ -28,7 +28,11 @@ class MasterServiceRecord(BaseModel):
 async def create_new_car_record(car: Car): 
     query = f''' 
             insert into sto.car (brand, model, year)
-            values ('{car.brand}', '{car.model}', {car.year})
+            select '{car.brand}', '{car.model}', {car.year}
+            where not exists (
+            select 1
+            from sto.car
+            where brand = '{car.brand}', '{car.model}', {car.year})
             returning id;
             '''
     result = postgre.execute_query(query)
